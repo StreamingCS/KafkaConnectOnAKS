@@ -11,7 +11,7 @@
 
 Follow [CC on Azure PL](https://docs.confluent.io/cloud/current/networking/private-links/azure-privatelink.html) to get a Confluent Cloud (CC) cluster in Azure Private Link up & running. In this example, Private DNS resolution is chosen for ease of use. Make sure connectivity is tested with producing messages into the topic. Below shows the active cluster network on Private Link.
 
-<img width="530" alt="image" src="https://github.com/StreamingCS/KafkaConnectOnAKS/assets/111465454/efec0407-87fa-499d-a6b4-92a825561a9c">
+<img width="470" alt="image" src="https://github.com/StreamingCS/KafkaConnectOnAKS/assets/111465454/352b44d7-5129-46c8-a314-d476dd93dcab">
 
 # Design your network topology
 
@@ -23,7 +23,7 @@ In below Azure Network topology,
   - k8ssubnet is the subnet designed for AKS deployment to deploy Kafka Connect
 - DemoClientVNet is a VNet to simulate data storages holds the data but exposed only at private endpoints, this VNet is peered to VNet PrivateLinkDemo
 
-<img width="969" alt="image" src="https://github.com/StreamingCS/KafkaConnectOnAKS/assets/111465454/84c5e9e1-f9db-4a7d-9e24-5c9d12ebcac1">
+<img width="756" alt="image" src="https://github.com/StreamingCS/KafkaConnectOnAKS/assets/111465454/e3b3a699-0379-42ca-921a-01c0973f30ce">
 
 - Park of the Network planning is the DNS resolution. In this demo we used 2 DNS private zone (1 for CC and 1 for MSSQL Private endpoint) and linked both to VNet so they know the IP address. Optionally you could replace it with a DNS service.
 
