@@ -25,7 +25,7 @@ In below Azure Network topology,
 
 <img width="756" alt="image" src="https://github.com/StreamingCS/KafkaConnectOnAKS/assets/111465454/e3b3a699-0379-42ca-921a-01c0973f30ce">
 
-- Park of the Network planning is the DNS resolution. In this demo we used 2 DNS private zone (1 for CC and 1 for MSSQL Private endpoint) and linked both to VNet so they know the IP address. Optionally you could replace it with a DNS service.
+- Part of the Network planning is the DNS resolution. In this demo we used 2 DNS private zone (1 for CC and 1 for MSSQL Private endpoint) and linked both to VNet so they know the IP address. Optionally you could replace it with a DNS service.
 
 # Create AKS cluster
 
