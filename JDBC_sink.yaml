@@ -1,0 +1,54 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Connect
+metadata:
+ name: jdbc
+spec:
+ replicas: 1
+ image:
+   application: confluentinc/cp-server-connect:7.0.1
+   init: confluentinc/confluent-init-container:2.2.0-1
+ podTemplate:
+   resources:
+     requests:
+       cpu: 1000m
+       memory: 512Mi
+   probe:
+     liveness:
+       periodSeconds: 10
+       failureThreshold: 5
+       timeoutSeconds: 30
+       initialDelaySeconds: 100
+     readiness:
+       periodSeconds: 10
+       failureThreshold: 5
+       timeoutSeconds: 30
+       initialDelaySeconds: 100
+   podSecurityContext:
+     fsGroup: 1000
+     runAsUser: 1000
+     runAsNonRoot: true 
+ build:
+   type: onDemand
+   onDemand:
+     plugins:
+       locationType: confluentHub
+       confluentHub:
+         - name: kafka-connect-jdbc
+           owner: confluentinc
+           version: 10.7.3
+ dependencies:
+   kafka:
+     bootstrapEndpoint: lkc-111111.22222222.uksouth.azure.confluent.cloud:9092
+     authentication:
+       type: plain
+       jaasConfig:
+         secretRef: ccloud-credentials
+     tls:
+       enabled: true
+       ignoreTrustStoreConfig: true
+   schemaRegistry:
+     url: https://ps-fs.westeurope.azure.confluent.cloud
+     authentication:
+       type: basic
+       basic:
+         secretRef: ccloud-sr-credentials
